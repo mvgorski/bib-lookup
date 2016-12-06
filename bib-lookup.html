@@ -1,0 +1,106 @@
+<style>
+#bib-lookup {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+#bib-lookup h2 {
+	font-family: Aku,sans-serif;
+	color: #1aaebc;
+}
+#bib-lookup .input-group {
+	width: 75%;
+	margin: 0 auto;
+}
+@media screen and (max-width: 767px) {
+	#bib-lookup .input-group {width: 100%;}
+}
+#bib-lookup .input-group-addon {
+	background-color: #1aaebc;
+	color: #fff;
+	/*font-family: Aku,sans-serif;*/
+}
+#bib-display {
+	position: relative;
+}
+#bib-display #bib-number {
+	position: absolute;
+	font-family: Aku,sans-serif;
+	font-size: 8em;
+	color: #fff;
+	top: 18%;
+	left: 42%;
+}
+#bib-display #bib-name {
+	position: absolute;
+	font-family: Aku,sans-serif;
+	font-size: 2em;
+	color: #fff;
+	top: 11%;
+	left: 43%;
+}
+</style>
+
+<div id="bib-lookup" class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h2>Enter your first and last name to discover your Surf City bib number!</h2>
+			<div class="form-group">
+			    <div class="input-group">
+		          	<input type="search" class="form-control" id="runner-name-search">
+		          	<div id="runner-search" class="input-group-addon">Search</div>
+	          	</div>
+		  	</div>
+        <div id="bib-container">
+          <div id="bib-display">
+            <img src="http://www.runsurfcity.com/wp-content/uploads/2016/11/bib.png" class="img-responsive center-block" alt="Run Surf City Bib Number">
+            <div id="bib-number">0012</div>
+            <div id="bib-name">First Last</div>
+          </div>
+        </div>
+
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+
+var runnersData;
+$.ajax({
+    type : 'GET',
+    dataType : 'json',
+    url: '../runningclub/surf-city-bib.json',
+    success: function(data){
+      runnersData = data;
+    }
+});
+
+// search on keyup
+var runnerSearch = $("#runner-search");
+
+$("#runner-name-search").change(function(){
+
+	var value = $(this).val();
+    var exp = new RegExp('^' + value, 'i');
+
+  // console.log($('#runner-name-search').val());
+  console.log(exp);
+
+  runnersData.filter(function(runner) {
+    if (runner["First Name"] == $("#runner-name-search").val() || runner["Last Name"] == $("#runner-name-search").val()) {
+ 
+      console.log(runner["Bib Number"] + " " + runner["Last Name"] +", " + runner["First Name"]);
+
+      $("#bib-container").append('<div id="bib-display"><img src="http://www.runsurfcity.com/wp-content/uploads/2016/11/bib.png" class="img-responsive center-block" alt="Run Surf City Bib Number"><div id="bib-number">'+runner["Bib Number"]+'</div><div id="bib-name">'+runner["First Name"]+' '+runner["Last Name"]+'</div></div>');
+    } else {
+    	$('#bib-display').hide();
+    } 
+
+
+
+
+  });  
+});
+
+
+}); 
+</script>
