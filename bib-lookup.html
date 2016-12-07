@@ -27,16 +27,25 @@
 	font-family: Aku,sans-serif;
 	font-size: 8em;
 	color: #fff;
-	top: 18%;
-	left: 42%;
+	/*top: 18%;*/
+	top: 20%;
+	/*left: 42%;*/
+	left: 339px;
+	width: 480px;
+	text-align: center;
+
 }
 #bib-display #bib-name {
 	position: absolute;
 	font-family: Aku,sans-serif;
 	font-size: 2em;
 	color: #fff;
-	top: 11%;
-	left: 43%;
+	/*top: 11%;*/
+	top: 42px;
+	/*left: 43%;*/
+	left: 339px;
+	text-align: center;
+	width: 480px;
 }
 </style>
 
@@ -53,8 +62,8 @@
         <div id="bib-container">
           <div id="bib-display">
             <img src="http://www.runsurfcity.com/wp-content/uploads/2016/11/bib.png" class="img-responsive center-block" alt="Run Surf City Bib Number">
-            <div id="bib-number">0012</div>
             <div id="bib-name">First Last</div>
+            <div id="bib-number">0012</div>  
           </div>
         </div>
 
@@ -64,6 +73,62 @@
 <script>
 $(document).ready(function() {
 
+	$("#runner-name-search").keyup(function(){
+
+		// console.log($('#runner-name-search').val());
+
+		var value = $(this).val();
+	    var exp = new RegExp(value, 'i');
+
+	    $.ajax({
+	        type : 'GET',
+	        dataType : 'json',
+	        url: '../runningclub/surf-city-bib.json',
+	        success: function(data){
+
+	        	console.log(exp);
+        		var output = '<div id="bib-display">';
+
+        	
+        		$.each(data, function(index,key) {
+        			
+        			// console.log(data["First Name"]);
+
+    			
+        			if (key["First Name"].search(exp) != -1) {
+        				
+        				output += '<img src="" class="img-responsive center-block" alt="Run Surf City Bib Number">';
+        				output += '<div id="bib-number">'+key["Bib Number"]+'</div>';
+        				output += '<div id="bib-name">'+key["First Name"]+' '+runner["Last Name"]+'</div>';
+        				output += '</div>';
+
+        				console.log('success');
+        			}
+	
+        		}); // each
+				
+				
+
+
+	          
+	        } // success
+
+	    }); // ajax
+
+	}); // keyup
+
+}); // ready
+
+/*
+<div id="bib-display">
+<img src="http://www.runsurfcity.com/wp-content/uploads/2016/11/bib.png" class="img-responsive center-block" alt="Run Surf City Bib Number">
+<div id="bib-number">'+runner["Bib Number"]+'</div>
+<div id="bib-name">'+runner["First Name"]+' '+runner["Last Name"]+'</div>
+</div>
+*/
+
+
+/*
 var runnersData;
 $.ajax({
     type : 'GET',
@@ -77,13 +142,13 @@ $.ajax({
 // search on keyup
 var runnerSearch = $("#runner-search");
 
-$("#runner-name-search").change(function(){
+$("#runner-name-search").keyup(function(){
 
-	var value = $(this).val();
-    var exp = new RegExp('^' + value, 'i');
+	// var value = $(this).val();
+    // var exp = new RegExp('^' + value, 'i');
 
-  // console.log($('#runner-name-search').val());
-  console.log(exp);
+  console.log($('#runner-name-search').val());
+  // console.log(exp);
 
   runnersData.filter(function(runner) {
     if (runner["First Name"] == $("#runner-name-search").val() || runner["Last Name"] == $("#runner-name-search").val()) {
@@ -103,4 +168,6 @@ $("#runner-name-search").change(function(){
 
 
 }); 
+
+*/
 </script>
