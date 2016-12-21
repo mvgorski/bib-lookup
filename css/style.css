@@ -1,0 +1,48 @@
+#bib-lookup {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+#bib-lookup h2 {
+	font-family: Aku,sans-serif;
+	color: #1aaebc;
+}
+#bib-lookup .input-group {
+	width: 75%;
+	margin: 0 auto;
+}
+@media screen and (max-width: 767px) {
+	#bib-lookup .input-group {width: 100%;}
+}
+#bib-lookup .input-group-addon {
+	background-color: #1aaebc;
+	color: #fff;
+	/*font-family: Aku,sans-serif;*/
+}
+#bib-display {
+	position: relative;
+}
+#bib-display #bib-number {
+	position: absolute;
+	font-family: Aku,sans-serif;
+	font-size: 8em;
+	color: #fff;
+	/*top: 18%;*/
+	top: 20%;
+	/*left: 42%;*/
+	left: 339px;
+	width: 480px;
+	text-align: center;
+
+}
+#bib-display #bib-name {
+	position: absolute;
+	font-family: Aku,sans-serif;
+	font-size: 2em;
+	color: #fff;
+	/*top: 11%;*/
+	top: 42px;
+	/*left: 43%;*/
+	left: 339px;
+	text-align: center;
+	width: 480px;
+}

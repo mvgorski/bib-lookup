@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bib Search - Surf City Marathon</title>
+  <meta name="description" content="JSON search example">
+  <meta name="author" content="Matthew Gorski">
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <!--style.css-->
+  <link rel="stylesheet" href="css/style.css?v=1.0">
+
+  <style type="text/css">
+
+
+
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div id="bib-lookup" class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h2>Enter your first and last name to discover your Surf City bib number!</h2>
+      <div class="form-group">
+          <div class="input-group">
+                <input type="search" class="form-control" id="runner-name-search">
+                <div id="runner-search" class="input-group-addon">Search</div>
+              </div>
+        </div>
+        <div id="bib-container">
+          <div id="bib-display">
+            <img src="http://www.runsurfcity.com/wp-content/uploads/2016/11/bib.png" class="img-responsive center-block" alt="Run Surf City Bib Number">
+            <div id="bib-name">First Last</div>
+            <div id="bib-number">0012</div>  
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!--Bootstrap-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<!--script.js-->
+  	<script src="js/script.js"></script>
+</body>
+</html>
